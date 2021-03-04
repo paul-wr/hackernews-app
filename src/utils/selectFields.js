@@ -1,3 +1,5 @@
+import styled from "styled-components"
+
 const selectFields = ({ id, by, url, time, title } = {}) => ({
   id,
   by,

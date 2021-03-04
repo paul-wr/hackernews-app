@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { StoryComponent } from "../components/StoryComponent"
 import getStoryIds from "../services/HackerNewsService"
-import StoryWrapper from "../styles/StoryStyles"
+import GlobalStyles from "../styles/GlobalStyle"
+import StoriesContainerStyles from "../styles/StoryContainerStyles"
 
 const StoriesContainer = () => {
   // initialize empty array
@@ -12,12 +13,15 @@ const StoriesContainer = () => {
   }, []) // runs once with empty array. Arg can be used such as [varToWatchForChanges]
 
   return (
-    <StoryWrapper data-testid="story">
-      <h1>Hacker News stories:</h1>
-      {storyIds.map((storyId) => (
-        <StoryComponent key={storyId} storyId={storyId} />
-      ))}
-    </StoryWrapper>
+    <>
+      <GlobalStyles />
+      <StoriesContainerStyles data-testid="stories-container">
+        <h1>Hacker News stories:</h1>
+        {storyIds.map((storyId) => (
+          <StoryComponent key={storyId} storyId={storyId} />
+        ))}
+      </StoriesContainerStyles>
+    </>
   )
 }
 

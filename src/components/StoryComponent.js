@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { getStory } from "../services/HackerNewsService"
+import {
+  StoryWrapper,
+  StoryTitle,
+  StoryMeta,
+  StoryMetaElement,
+} from "../styles/StoryStyles"
+import mapTime from "../mappers/mapTime"
 
 export const StoryComponent = ({ storyId }) => {
   const [story, setStory] = useState({})
@@ -9,15 +16,21 @@ export const StoryComponent = ({ storyId }) => {
   }, [])
   return story && story.url ? (
     // fragment syntax <></> allows placing elements next to eachother
-    <>
-      <h4>
-        <a href={story.url}>
-          <p>{story.title}</p>
-        </a>
-      </h4>
-      <p>Id: {story.id}</p>
-      <p>By: {story.by}</p>
-      <p>Time: {story.time}</p>
-    </>
+
+    <StoryWrapper data-testid="story">
+      <StoryTitle>
+        <a href={story.url}>{story.title}</a>
+      </StoryTitle>
+      <StoryMeta>
+        <span data-testid="story-by">
+          <StoryMetaElement>By: </StoryMetaElement>
+          {story.by}
+        </span>
+        <span data-testid="story-time">
+          <StoryMetaElement>Posted: </StoryMetaElement>
+          {mapTime(story.time)}
+        </span>
+      </StoryMeta>
+    </StoryWrapper>
   ) : null
 }
