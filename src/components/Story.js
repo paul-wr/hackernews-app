@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getStory } from "../services/HackerNewsService"
+import { getStory } from "../services/HackerNewsApi"
 import {
   StoryWrapper,
   StoryTitle,
@@ -8,7 +8,7 @@ import {
 } from "../styles/StoryStyles"
 import mapTime from "../mappers/mapTime"
 
-export const StoryComponent = ({ storyId }) => {
+export const Story = ({ storyId }) => {
   const [story, setStory] = useState({})
 
   useEffect(() => {

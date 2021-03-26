@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { StoryComponent } from "../components/StoryComponent"
-import getStoryIds from "../services/HackerNewsService"
+import { Story } from "../components/Story"
+import { getStoryIds } from "../services/HackerNewsApi"
 import GlobalStyles from "../styles/GlobalStyle"
 import StoriesContainerStyles from "../styles/StoryContainerStyles"
 import useInfiniteScroll from "../hooks/useInfiniteScroll"
@@ -18,9 +18,9 @@ const StoriesContainer = () => {
     <>
       <GlobalStyles />
       <StoriesContainerStyles data-testid="stories-container">
-        <h1>Hacker News stories:</h1>
+        <h1>Hacker News Api:</h1>
         {storyIds.slice(0, count).map((storyId) => (
-          <StoryComponent key={storyId} storyId={storyId} />
+          <Story key={storyId} storyId={storyId} />
         ))}
       </StoriesContainerStyles>
     </>

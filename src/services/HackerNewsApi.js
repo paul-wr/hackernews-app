@@ -12,9 +12,7 @@ export const getStory = async (storyId) => {
   return result
 }
 
-const getStoryIds = async () => {
+export const getStoryIds = async () => {
   const result = await axios.get(newStoriesUrl).then(({ data }) => data)
   return result
 }
-
-export default getStoryIds
