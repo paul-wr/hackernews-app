@@ -44,5 +44,28 @@
     "prettier": "^2.2.1",
     "yarn": "^1.22.10",
     "@testing-library/react": "^11.1.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/index.js",
+      "!src/reportWebVitals.js",
+      "!src/hooks/*.js",
+      "!src/selecters/*.js",
+      "!src/mappers/*.js",
+      "!src/utils/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 95,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "coverageReporters": [
+      "html",
+      "text"
+    ]
   }
 }
